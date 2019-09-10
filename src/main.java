@@ -5,7 +5,7 @@ public class main {
 
 	public static void main(String[] args) throws IOException {
 		
-		int[] commands = {-2,-1,8,-1,6};
+		int[] commands = {2,-1,8,-1,6};
 		int[][] obstacles = {{1,5},{-5,-5},{0,4},{-1,-1},{4,5},{-5,-3},{-2,1},{-2,-5},{0,5},{0,-1}};
 
 		System.out.println(robotSim(commands, obstacles));
@@ -49,8 +49,7 @@ public class main {
 							if (direction == '-' && obstacles[j][0] < 0) {
 								x = x <= obstacles[j][0] ? obstacles[j][0] + 1 : x;
 							}
-						}
-						
+						} 
 						if (dimension == 'y' && x == obstacles[j][0]) {
 							if (direction == '+' && obstacles[j][1] > 0) {
 								y = y >= obstacles[j][1] ? obstacles[j][1] - 1 : y;
@@ -72,9 +71,7 @@ public class main {
 					if (commands[i] == -2) {
 						direction = '+';
 					}
-				}
-				
-				if ((dimension == 'x' && direction == '-') || (dimension == 'y' && direction == '+')) {
+				} else if ((dimension == 'x' && direction == '-') || (dimension == 'y' && direction == '+')) {
 					if (commands[i] == -1) {
 						direction = '+';
 					}
@@ -91,6 +88,6 @@ public class main {
 		
 		
 		
-		return x*x+y*y;
+		return Math.max(0, x*x+y*y);
     }
 }
