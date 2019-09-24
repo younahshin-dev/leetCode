@@ -25,32 +25,36 @@ public class XofaKindInaDeckOfCards {
 	public static boolean hasGroupsSizeX(int[] deck) {
 		
 		int N = deck.length;
-        int[] count = new int[10000];
-        for (int c: deck) 
-            count[c]++;
-        	
-        List<Integer> values = new ArrayList();
-        for (int i = 0; i < 10000; ++i)
-            if (count[i] > 0)
-                values.add(count[i]);
-
-        search: for (int X = 2; X <= N; ++X) 
-            if (N % X == 0) {
-                for (int v: values)
-                    if (v % X != 0)
-                        continue search;
-                return true;
-            }
+		
+		ArrayList<Integer> value = new ArrayList<Integer>();
+		int[] count = new int[10000];
+		
+		for (int c : deck)
+			count[c]++;
+		
+		for (int i = 0 ; i < 10000; i++)
+			if (count[i] > 0)
+				value.add(count[i]);
         
-        return false;
-        
+		search: for (int X = 2; X <= N; X++) 
+			if (N%X == 0) {
+				for(int v : value)
+					if(v%X != 0) 
+						continue search;
+					
+				return true;
+				
+			}
+		
+		return false;
+		
     }
 	
 
 	
 	@Test
     public void test_Deck() {
-		int[] deck = {1,2,3,4,4,3,2,1};
+		int[] deck = {1,2,3,4,1,2,3,4};
 
 		boolean result = hasGroupsSizeX(deck); // 함수 실행
 		
