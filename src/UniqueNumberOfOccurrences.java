@@ -1,11 +1,8 @@
 import static org.junit.Assert.assertEquals;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -23,30 +20,29 @@ public class UniqueNumberOfOccurrences {
 	
 	public boolean uniqueOccurrences(int[] arr) {
         
-		int[] cnt = new int[1000];
-        
-        for (int i : arr) 
-        	cnt[i]++;
-        
-        for (int i = 0 ; i< cnt.length ; i++) {
-        	for (int j = 0  ; j< cnt.length; j++) {
-        		if (cnt[i]!=0 && cnt[j]!=0) {
-	        		if (i != j && cnt[i] == cnt[j]) {
-	        			return false;
-	        		}
-        		}
-        	}
-        }
-        
+		Map<Object, Integer> cntMap = new HashMap<Object, Integer>();
+		for (int c : arr) {
+			cntMap.put(c, cntMap.getOrDefault(c, 0)+1);
+		}
+		
+		Collection<Integer> col = cntMap.values();
+		Object[] intcol = col.toArray();
+		for (int i = 0; i < intcol.length; i++) {
+			for (int j = i+1; j < intcol.length; j++) {
+				if (intcol[i] == intcol[j]) {
+					return false;
+				}
+			}
+		}
+		
 		return true;
     }
 	
  	@Test
     public void test() {
-		int[] input = {-3,0,1,-3,1,1,1,-3,10,0};
-
+		int[] input = {0,0,-2,-1,4,8,-3,9,6};
 		boolean result = uniqueOccurrences(input); // 함수 실행
 		
-        assertEquals(true, result); // 결과 확인
+        assertEquals(false, result); // 결과 확인
     }
 }
