@@ -42,7 +42,7 @@ public class MinimumAbsoluteDifference {
 		for (char c : ransomArr) {
 			if (!magazineMap.containsKey(c))
 				return false;
-			if (magazineMap.get(c) < ransomMap.get(c))
+			if (magazineMap.get(c) < ransomMap.get(c)) 
 				return false;
 		}
 		
