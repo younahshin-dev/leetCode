@@ -51,7 +51,7 @@ public class IsSubsequence {
 		return true;
     }
 	
-	@Test
+	@Test 
     public void test_Deck() {
 		
 		String param1 = "leeeeetcode";
