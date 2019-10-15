@@ -29,26 +29,19 @@ public class IsSubsequence {
 	
 	public boolean isSubsequence(String s, String t) {
 		
-		int[] iArr = new int[s.length()];
-		int[] jArr = new int[100];
-		for (int i = 0; i < s.toCharArray().length; i++)
-			iArr[i] = s.toCharArray()[i]-'a';
-		
-		int idx = 0;
-		for (char c : t.toCharArray()) {
-			if (s.indexOf(c) >= 0) {
-				jArr[idx] = c-'a';
-				idx++;
-			}
+		if (s.equals(""))
+            return true;
+        
+        int cnt = 0;
+		for (int i = 0; i < t.length(); i++) {
+			if (cnt < s.length() && s.charAt(cnt) == t.charAt(i))
+				cnt++;
+			
+			if (cnt == s.length())
+				return true;
 		}
 		
-		for (int i = 0; i < iArr.length; i++)
-			if (iArr[i] != jArr[i])
-				return false;
-		
-		int a = iArr.length;
-		
-		return true;
+		return false;
     }
 	
 	@Test 
@@ -59,6 +52,6 @@ public class IsSubsequence {
 
 		boolean result = isSubsequence(param1, param2); 
 		
-        assertEquals(true, result); 
+        assertEquals(false, result); 
     }
 }
