@@ -27,24 +27,18 @@ public class MinimumAbsoluteDifference {
 	
 	public boolean canConstruct(String ransomNote, String magazine) {
         
-		char[] ransomArr = ransomNote.toCharArray();
-		char[] magazineArr = magazine.toCharArray();
+		int[] iArr = new int[26];
 		
-		HashMap<Object, Integer> ransomMap = new HashMap<Object, Integer>();
-		HashMap<Object, Integer> magazineMap = new HashMap<Object, Integer>();
+		for (char c : magazine.toCharArray()) 
+			iArr[c-'a']++;
 		
-		for (char c : ransomArr) 
-			ransomMap.put(c, ransomMap.getOrDefault(c, 0)+1);
+		for (char c : ransomNote.toCharArray()) 
+			iArr[c-'a']--;
 		
-		for (char c : magazineArr) 
-			magazineMap.put(c, magazineMap.getOrDefault(c, 0)+1);
-		
-		for (char c : ransomArr) {
-			if (!magazineMap.containsKey(c))
+		for (int i = 0 ; i < iArr.length; i++) 
+			if (iArr[i] < 0)
 				return false;
-			if (magazineMap.get(c) < ransomMap.get(c)) 
-				return false;
-		}
+		
 		
 		return true;
     }
