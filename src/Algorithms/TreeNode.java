@@ -1,3 +1,4 @@
+package Algorithms;
 
 public class TreeNode {
 	    int val;

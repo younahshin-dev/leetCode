@@ -1,3 +1,4 @@
+package Algorithms;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
@@ -21,11 +22,7 @@ import org.junit.Test;
 public class ToLowerCase {
 	
 	public String toLowerCase(String str) {
-        String result = "";
-        
-        result = str.toLowerCase();
-        
-		return result;
+		return str.toLowerCase();
     }
 	
  	@Test

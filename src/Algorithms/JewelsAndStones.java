@@ -1,3 +1,4 @@
+package Algorithms;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
@@ -43,12 +44,6 @@ public class JewelsAndStones {
 				if (c == S.charAt(i))
 					num++;
 					
-			
-			
-		
-		
-		
-		 
 		return num;
 		
     }

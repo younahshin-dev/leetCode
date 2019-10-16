@@ -1,3 +1,4 @@
+package Algorithms;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
@@ -32,7 +33,6 @@ public class ReverseOnlyLetters {
 		for (char c : S.toCharArray()) 
 			if (Character.isLetter(c))
 				stack.push(c);
-		
 		
 		String result = "";
 		for (int i = 0; i < clone.length; i++) {
