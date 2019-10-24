@@ -37,7 +37,7 @@ public class HappyNumber {
 		
 		return result;
     }
-	
+	 
 	public int checkHappy(int n) {
 		
 		int temp = 0;
