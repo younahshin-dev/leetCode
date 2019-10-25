@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,9 +28,14 @@ public class HappyNumber {
 	public boolean isHappy(int n) {
 		
 		boolean result = false;
-		
+		HashSet<Integer> hs = new HashSet<Integer>();
 		while (n > 1) {
+			hs.add(n);
 			n = checkHappy(n);
+			if (hs.contains(n)) {
+				result = false;
+				break;
+			}
 		}
 		
 		if (n == 1)
