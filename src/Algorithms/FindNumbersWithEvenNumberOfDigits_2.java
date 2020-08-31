@@ -16,37 +16,28 @@ import org.junit.Test;
 public class FindNumbersWithEvenNumberOfDigits_2 {
 	public int findNumbers(int[] nums) {
 		
-		int last = 0;
-		boolean even = true;
-		int cnt = 0;
+		int cnt = 0, result = 0;
 		for (int num : nums) {
 			
 			while (num > 0) {
-				last = num%10;
-				
-				if (last%2 != 0) {
-					even = false;
-					break;
-				}
-				
+				cnt++;
 				num = num/10;
-				
 			}
 			
-			if (even) cnt++;
-			even = true;
+			if (cnt%2==0) result++;
+			cnt = 0;
 		}
 		
-		return cnt;  
+		return result;  
     }
 	
 	@Test
     public void test_FindNumbers() {
 		
-		int[] nums = {12,345,2,6,7896};
+		int[] nums = {437,315,322,431,686,264,442};
 
 		int result = findNumbers(nums); 
 		
-        assertEquals(2, result); 
+        assertEquals(0, result); 
     }
 }
