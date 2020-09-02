@@ -36,11 +36,7 @@ public class KidsWiththeGreatestNumberofCandies {
 		}
 		
 		for(int i : candies) {
-			if (i + extraCandies >= max) {
-				success.add(true);
-			}else {
-				success.add(false);
-			}
+			success.add(i + extraCandies >= max);
 		}
 		return success;
     }
