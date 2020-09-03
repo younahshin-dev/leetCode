@@ -14,22 +14,12 @@ import org.junit.Test;
 
 public class XOROperationinanArray {
 	public int xorOperation(int n, int start) {
-		int[] nums = new int[n];
 		
 		int result = 0;
 		for (int i = 0 ; i < n ; i++) {
-			nums[i] = start + 2*i;
+			result ^=(start + 2*i);
 		}
-		
-		for (int i = 0 ; i < n ; i++) {
-			if (i == 0) {
-				result = nums[0];	
-			} else {
-				result  = result^nums[i];
-			}
-		}
-		
-		return result;	
+        return result;	
     }
 	
 	@Test
