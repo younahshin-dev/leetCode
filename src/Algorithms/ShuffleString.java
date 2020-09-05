@@ -21,11 +21,8 @@ public class ShuffleString {
 			index[indices[i]] = s.charAt(i);
 		}
 		
-		String result = "";
-		for (int i = 0; i < index.length; i++) {
-			result += index[i];
-		}
-		return result;
+
+		return new String(index);
     }
 	
 	@Test
