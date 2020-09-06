@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import Algorithms.FIRST_SEP_20.ToLowerCase;
+
 /*
  * 500. Keyboard Row
  * 
@@ -15,8 +17,14 @@ import org.junit.Test;
 
 public class KeyboardRow {
 	public String[] findWords(String[] words) {
-        String[] result = null ;
-		return result;
+        List<String> result= new ArrayList<>();
+        for (String word : words) {
+        	if (word.toLowerCase().matches("[qwertyuiop]+") ||word.toLowerCase().matches("[asdfghjkl]+")||word.toLowerCase().matches("[zxcvbnm]+")) {
+        		result.add(word);
+        	}
+        }
+        
+		return result.toArray(new String[result.size()]);
     }
 	
 	@Test
