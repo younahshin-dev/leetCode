@@ -3,44 +3,57 @@ package Algorithms;
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Stack;
 
 import org.junit.Test;
 
 /*
- * 169. Majority Element
+ * 13. Roman to Integer
  * 
- * Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
- * You may assume that the array is non-empty and the majority element always exist in the array.
+ * Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+ * 
+ * Symbol       Value
+	I             1
+	V             5
+	X             10
+	L             50
+	C             100
+	D             500
+	M             1000
  * */
 
 public class MajorityElement {
-	public int majorityElement(int[] nums) {
+	public int romanToInt(String s) {
+		HashMap<String, Integer> romanSet = new HashMap<String, Integer>();
 		
-		HashMap num = new HashMap();
+		romanSet.put("I", 1);
+		romanSet.put("V", 5);
+		romanSet.put("X", 10);
+		romanSet.put("L", 50);
+		romanSet.put("C", 100);
+		romanSet.put("D", 500);
+		romanSet.put("M", 1000);
+		int result = 0;
+		int pre = 0;
+		int cur = 0;
+		for (int i = s.length()-1 ; i >= 0 ; i--) {
+			cur = romanSet.get(String.valueOf(s.charAt(i)));
 
-		for (int i = 0; i < nums.length; i++) {
-			String key = String.valueOf(nums[i]);
-			if (!num.containsKey(key)) {
-				num.put(key, 1);
+			if (cur >= pre) {
+				result += cur;
 			} else {
-				num.put(key, Integer.parseInt(String.valueOf(num.get(key)))+1);
+				result -=cur;
 			}
+			pre = cur;
 		}
-		
-		
-		for(int i : nums) {
-			if (Integer.parseInt(String.valueOf(num.get(String.valueOf(i)))) > nums.length/2) {
-				return i;
-			}
-		}
-		
-		return 0;
+		return result;
     }
 	 
 	@Test
 	public void test_BuildanArrayWithStackOperations() {
-		int[] target = {3,2,3};
-		int result = majorityElement(target); 
-        assertEquals(3, result); 
+		String roman = "XII";
+		int result = romanToInt(roman); 
+        assertEquals(12, result); 
 	}
 }
