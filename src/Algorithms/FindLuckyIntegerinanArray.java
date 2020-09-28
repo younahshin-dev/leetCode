@@ -20,7 +20,7 @@ public class FindLuckyIntegerinanArray {
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		HashMap<Integer, Integer> cnt = new HashMap<Integer, Integer>();
 		for (int param : arr) {
-			if (cnt.containsKey(param)) {
+			if (cnt.containsKey(param)) { 
 				cnt.put(param, cnt.get(param)+1);
 			} else {
 				cnt.put(param, 1);
