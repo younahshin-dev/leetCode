@@ -15,7 +15,7 @@ import org.junit.Test;
  * */
 
 public class FindLuckyIntegerinanArray {
-	
+	 
 	public int findLucky(int[] arr) {
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		HashMap<Integer, Integer> cnt = new HashMap<Integer, Integer>();
