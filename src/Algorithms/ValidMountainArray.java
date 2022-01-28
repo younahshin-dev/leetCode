@@ -16,29 +16,33 @@ import org.junit.Test;
  */
 public class ValidMountainArray {
     public boolean validMountainArray(int[] arr) {
-        int pointCnt = 0;
-        boolean goingUp = true;
-        boolean goingDown = false;
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i-1] > arr[i]) {
-                goingDown = true;
-                if (goingDown) {
-                    pointCnt++;
-                }
+        if(arr.length <3){
+            return false;
+        }
 
-                if (goingUp) {
-                    goingDown = true;
-                    goingUp = false;
-                }
-
+        int decreasingInflectionPoint = 0;
+        int increasingInflectionPoint = 0;
+        for(int i = 0; i+2<arr.length; i++){
+            if(arr[i] <arr[i+1] && arr[i+1] > arr[i+2]){
+                decreasingInflectionPoint++;
             }
-        }
-        if (pointCnt == 1) {
-            return true;
+
+            if(arr[i] >arr[i+1] && arr[i+1] < arr[i+2]){
+                increasingInflectionPoint++;
+            }
+
+            if(arr[i] == arr[i+1]){
+                return false;
+            }
+
         }
 
+        if(increasingInflectionPoint >0 || decreasingInflectionPoint != 1){
+            return false;
+        }
 
-        return false;
+        return true;
+
     }
 
     @Test
