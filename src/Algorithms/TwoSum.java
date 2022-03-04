@@ -3,6 +3,8 @@ package Algorithms;
 import common.TreeNode;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -21,16 +23,16 @@ import static org.junit.Assert.assertEquals;
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
+        HashMap<Integer, Integer> indexMap = new HashMap<Integer, Integer>();
 
         for (int i = 0; i < nums.length; i++) {
-            for(int j = i+1; j < nums.length; j++) {
-                if (target == nums[i] + nums[j]) {
-                    result[0] = i;
-                    result[1] = j;
-
-                    return result;
-                }
+            if (indexMap.containsKey(target-nums[i])) {
+                result[0] = i;
+                result[1] = indexMap.get(target-nums[i]);
+                System.out.println("result : "+result[0]+", "+result[1]);
+                return result;
             }
+            indexMap.put(nums[i], i);
         }
 
         return result;
@@ -39,10 +41,10 @@ public class TwoSum {
     @Test
     public void test_twosum() {
 
-        int[] nums = {2,7,11,15};
-        int target = 9;
+        int[] nums = {3,2,3};
+        int target = 6;
 
         int[] result = twoSum(nums, target);
-        assertArrayEquals(new int[]{0, 1}, result);
+        assertArrayEquals(new int[]{0, 2}, result);
     }
 }
